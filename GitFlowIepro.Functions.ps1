@@ -13,6 +13,11 @@ function IeproFlow-Help() {
 
     Write-Host "Rebase-From-Origin" -ForegroundColor Yellow -NoNewline
     Write-Host " (alias: rbo)`n  Faz rebase de origin/[branch] para [branch] onde [branch] é o nome da branch atual"`n
+
+    Write-Host "Rebase-From-Develop" -ForegroundColor Yellow -NoNewline
+    Write-Host " (alias: rbd)`n  Faz rebase da develop para a branch atual"`n
+
+    Write-Host "Para informações sobre uma função específica (como definição de parâmetros), execute o comando Get-Help NomeDaFuncao"
 }
 
 function new-ft {
@@ -33,6 +38,10 @@ function co-tsk {
 
 function rbo {
     Rebase-From-Origin
+}
+
+function rbd {
+    Rebase-From-Develop
 }
 
 <#
@@ -185,6 +194,28 @@ function Rebase-From-Origin {
     $branch = Get-Current-Branch-Name
 
     git rebase "origin/$branch"
+}
+
+<#
+    .Synopsis
+    Faz rebase da develop para a branch atual
+
+    .Parameter origin
+    (Opcional) Se informado o rebase é feito da origin/develop. Caso contrário, é feito da develop
+#>
+function Rebase-From-Develop {
+    param (
+        [Parameter(Mandatory=$false)]
+        [Alias("o")]
+        [switch] $origin
+    ) 
+
+    $branch = "develop"
+    if($origin) {
+        $branch = "origin/develop"
+    }
+    
+    git rebase $branch
 }
 
 # Todo: Ver se isso se encaixa no guia de nomenclatura
