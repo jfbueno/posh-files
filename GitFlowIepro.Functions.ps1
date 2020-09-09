@@ -12,7 +12,7 @@ function IeproFlow-Help() {
     Write-Host " (alias: co-tsk)`n  Faz checkout para a branch de tarefa especificada"`n
 
     Write-Host "Rebase-From-Origin" -ForegroundColor Yellow -NoNewline
-    Write-Host " (alias: rbo)`n  Faz rebase de origin/`$branch para `$branch onde `$branch é o nome da branch atual"`n
+    Write-Host " (alias: rbo)`n  Faz rebase de origin/[branch] para [branch] onde [branch] é o nome da branch atual"`n
 }
 
 function new-ft {
@@ -37,7 +37,7 @@ function rbo {
 
 <#
     .Synopsis
-    Cria uma nova feature branch no formato story-[Id]/feature
+    Cria uma nova feature branch no formato story-[IdFeature]/feature
 
     .Parameter feature
     Id da feature
@@ -113,6 +113,14 @@ function New-TaskBranch {
     git checkout -b "$featurePrefix/task/$task" $featureBranch
 }
 
+<#
+    .Synopsis
+    Faz checkout para a feature branch informada ou para a feature branch referente à branch atual
+    
+    .Parameter feature
+    (Opcional) Id da feature. Caso não seja informado, a feature branch será inferida a partir da
+    branch atual (desde que ela siga o padrão story-[IdFeature]/task/[IdTask])    
+#>
 function Checkout-FeatureBranch {
     param (
         [Alias("f")]
@@ -133,6 +141,17 @@ function Checkout-FeatureBranch {
     git checkout "story-$feature/feature"
 }
 
+<#
+    .Synopsis
+    Faz checkout para a task branch informada
+
+    .Parameter task
+    Id da task
+
+    .Parameter feature
+    (Opcional) Id da feature. Caso não seja informado, a feature branch será inferida a partir da
+    branch atual (desde que ela siga o padrão story-[IdFeature]/task/[IdTask])
+#>
 function Checkout-TaskBranch {
     param (
         [Parameter(Mandatory=$true)]
@@ -158,6 +177,10 @@ function Checkout-TaskBranch {
     git checkout "$featurePrefix/task/$task"
 }
 
+<#
+    .Synopsis
+    Faz rebase de origin/[Branch] para [Branch] onde [Branch] é o nome da branch atual
+#>
 function Rebase-From-Origin {
     $branch = Get-Current-Branch-Name
 
