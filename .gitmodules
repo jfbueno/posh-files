@@ -4,7 +4,3 @@
 [submodule "Modules/posh-git"]
 	path = Modules/posh-git
 	url = https://github.com/dahlbyk/posh-git
-[submodule "Modules/oh-my-posh"]
-	path = Modules/oh-my-posh
-	url = https://github.com/JanDeDobbeleer/oh-my-posh
-	ignore = dirty
