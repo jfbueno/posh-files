@@ -17,6 +17,9 @@ function IeproFlow-Help() {
     Write-Host "Rebase-From-Develop" -ForegroundColor Yellow -NoNewline
     Write-Host " (alias: rbd)`n  Faz rebase da develop para a branch atual"`n
 
+    Write-Host "Rebase-From-Feature" -ForegroundColor Yellow -NoNewline
+    Write-Host " (alias: rbft)`n  Faz rebase da feature branch para a branch atual"`n
+
     Write-Host "Para informações sobre uma função específica (como definição de parâmetros), execute o comando Get-Help NomeDaFuncao"
 }
 
@@ -42,6 +45,10 @@ function rbo {
 
 function rbd {
     Rebase-From-Develop
+}
+
+function rbft {
+    Rebase-From-Feature
 }
 
 <#
@@ -96,7 +103,7 @@ function New-TaskBranch {
     )
 
     if(!$feature) {
-        $featureBranch = Get-Currrent-Feature
+        $featureBranch = Get-Current-Feature
         if (!$featureBranch) {
             Write-Error "Não foi possível identificar a feature de origem."
             Return
@@ -137,7 +144,7 @@ function Checkout-FeatureBranch {
     )
 
     if(-Not $feature) {
-        $featureBranchName = Get-Currrent-Feature
+        $featureBranchName = Get-Current-Feature
 
         if(-Not $featureBranchName) { 
             Return
@@ -171,7 +178,7 @@ function Checkout-TaskBranch {
     )
 
     if(!$feature) {
-        $featureBranch = Get-Currrent-Feature
+        $featureBranch = Get-Current-Feature
 
         if(!$featureBranch) {
             Write-Error "Não foi possível identificar a feature de origem. É preciso especificá-la usando o parâmetro -feature ou fazer um checkout para a branch"
@@ -218,8 +225,31 @@ function Rebase-From-Develop {
     git rebase $branch
 }
 
+<#
+    .Synopsis
+    Faz rebase da feature branco para a branch atual
+
+    .Parameter origin
+    (Opcional) Se informado o rebase é feito da origin. Caso contrário, é feito da branch local.
+#>
+function Rebase-From-Feature {
+    param (
+        [Parameter(Mandatory=$false)]
+        [Alias("o")]
+        [switch] $origin
+    ) 
+
+    $branch = Get-Current-Feature
+
+    if ($origin) {
+        $branch = "origin/$branch"
+    }
+
+    git rebase $branch
+}
+
 # Todo: Ver se isso se encaixa no guia de nomenclatura
-function Get-Currrent-Feature {
+function Get-Current-Feature {
     $currentBranch = Get-Current-Branch-Name
 
     if ($currentBranch -Match "story-(\d+)/feature") {
