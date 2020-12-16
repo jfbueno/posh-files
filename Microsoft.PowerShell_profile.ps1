@@ -6,13 +6,14 @@ Import-Module PSReadline
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler –Key DownArrow -Function HistorySearchForward
 
-Import-Module "$localModulesDir/posh-git/src/posh-git.psd1"
 Import-Module "$localModulesDir/posh-alias"
-Import-Module "$localModulesDir/oh-my-posh"
+Import-Module "$localModulesDir/posh-git/src/posh-git.psd1"
 
-Set-Theme Paradox.Jefh
-
-$DefaultUser = 'jeferson.bueno'
+if (-Not (Get-Module -ListAvailable -Name oh-my-posh)) {
+    Install-Module oh-my-posh -Scope CurrentUser -AllowPrerelease -Force
+}
+Import-Module oh-my-posh
+Set-PoshPrompt powerlevel10k_classic
 
 . "$root/GitFlowIepro.Functions.ps1"
 . "$root/CreateAliases.ps1"
