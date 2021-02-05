@@ -19,7 +19,8 @@
                     "leading_diamond": "",
                     "trailing_diamond": "",
                     "properties": {
-                        "prefix": " 💻 "
+                        "prefix": " 💻 ",
+                        "display_user": false
                     }
                 },
                 {
@@ -49,7 +50,8 @@
                         "display_stash_count": true,
                         "display_upstream_icon": true,
                         "local_working_icon": " 📝",
-                        "local_staged_icon": " ✅"
+                        "local_staged_icon": " ✅",
+                        "stash_count_icon": "💾 "
                     }
                 },
                 {
@@ -133,13 +135,13 @@
             "alignment": "left",
             "horizontal_offset": 0,
             "vertical_offset": 0,
-            "segments": [                
+            "segments": [
                 {
                     "type": "exit",
                     "style": "diamond",
                     "foreground": "#ffffff",
                     "background": "#2e9599",
-                    "trailing_diamond": "",                    
+                    "trailing_diamond": "",
                     "leading_diamond": "",
                     "properties": {
                         "always_enabled": true,
