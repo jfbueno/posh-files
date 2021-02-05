@@ -12,8 +12,9 @@ Import-Module "$localModulesDir/posh-git/src/posh-git.psd1"
 if (-Not (Get-Module -ListAvailable -Name oh-my-posh)) {
     Install-Module oh-my-posh -Scope CurrentUser -AllowPrerelease -Force
 }
+
 Import-Module oh-my-posh
-Set-PoshPrompt powerlevel10k_classic
+Set-PoshPrompt -Theme "$root/omp-theme.json"
 
 . "$root/GitFlowIepro.Functions.ps1"
 . "$root/CreateAliases.ps1"
