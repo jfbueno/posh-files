@@ -14,8 +14,8 @@ function IeproFlow-Help() {
     Write-Host "Rebase-From-Origin" -ForegroundColor Yellow -NoNewline
     Write-Host " (alias: rbo)`n  Faz rebase de origin/[branch] para [branch] onde [branch] é o nome da branch atual"`n
 
-    Write-Host "Rebase-From-Develop" -ForegroundColor Yellow -NoNewline
-    Write-Host " (alias: rbd)`n  Faz rebase da develop para a branch atual"`n
+    Write-Host "Rebase-From-Main" -ForegroundColor Yellow -NoNewline
+    Write-Host " (alias: rbd)`n  Faz rebase da main para a branch atual"`n
 
     Write-Host "Rebase-From-Feature" -ForegroundColor Yellow -NoNewline
     Write-Host " (alias: rbft)`n  Faz rebase da feature branch para a branch atual"`n
@@ -43,8 +43,8 @@ function rbo {
     Rebase-From-Origin
 }
 
-function rbd {
-    Rebase-From-Develop
+function rbm {
+    Rebase-From-Main
 }
 
 function rbft {
@@ -60,14 +60,14 @@ function rbft {
 
     .Parameter from
     Define a branch que será usada como origem para criar a nova branch. 
-    Se não for informada, toma 'develop' como padrão
+    Se não for informada, toma 'main' como padrão
 #>
 function New-FeatureBranch {
-	param (
-        [Parameter(Mandatory=$true)]
+    param (
+        [Parameter(Mandatory = $true)]
         [int]$feature,
-        [Parameter(Mandatory=$false)]
-        [string]$from = 'develop'
+        [Parameter(Mandatory = $false)]
+        [string]$from = 'main'
     )
     git checkout -b "story-$feature/feature" $from
 }
@@ -76,7 +76,7 @@ function New-FeatureBranch {
     .Synopsis
     Cria uma nova feature branch de tarefa no formato story-Id/task/[Tarefa].
     É possível especificar a feature de origem usando o parâmetro -feature ou criar automaticamente com base na branch atual desde que ela respeite o padrão story-id/feature. 
-    Também é possível criar a feature (a partir da develop) usando o switch -createFeature
+    Também é possível criar a feature (a partir da main) usando o switch -createFeature
 
     .Parameter task
     Id da tarefa
@@ -87,22 +87,22 @@ function New-FeatureBranch {
     Caso seja informado, mas a feature não existir será retornado um erro, a não ser que seja usado o switch -createFeature
 
     .Parameter createFeature
-    [Opcional] Define se a 
+    [Opcional] Define se a branch feature deve ser criada também (com base na branch 'main')
 #>
 function New-TaskBranch {
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [Alias("t")]
         [int]$task,
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Alias("f")]
         [int]$feature,
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Alias("c")]
         [switch]$createFeature
     )
 
-    if(!$feature) {
+    if (!$feature) {
         $featureBranch = Get-Current-Feature
         if (!$featureBranch) {
             Write-Error "Não foi possível identificar a feature de origem."
@@ -110,7 +110,8 @@ function New-TaskBranch {
         }
 
         $featurePrefix = $featureBranch.Replace('/feature', '')
-    } else {
+    }
+    else {
         $featurePrefix = "story-$feature"
         $featureBranch = "$featurePrefix/feature"
 
@@ -118,8 +119,9 @@ function New-TaskBranch {
 
         if (!$featureCommit) {
             if ($createFeature) {
-                New-FeatureBranch $feature 'develop'
-            } else {
+                New-FeatureBranch $feature 'main'
+            }
+            else {
                 Write-Error "Não foi possível encontrar a branch feature $featureBranch. Para criá-la use o mesmo comando com o parâmetro -createFeature"
                 Return
             }
@@ -143,10 +145,10 @@ function Checkout-FeatureBranch {
         [int]$feature
     )
 
-    if(-Not $feature) {
+    if (-Not $feature) {
         $featureBranchName = Get-Current-Feature
 
-        if(-Not $featureBranchName) { 
+        if (-Not $featureBranchName) { 
             Return
         }
 
@@ -170,23 +172,24 @@ function Checkout-FeatureBranch {
 #>
 function Checkout-TaskBranch {
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [Alias("t")]
         [int]$task,
         [Alias("f")]
         [int]$feature
     )
 
-    if(!$feature) {
+    if (!$feature) {
         $featureBranch = Get-Current-Feature
 
-        if(!$featureBranch) {
+        if (!$featureBranch) {
             Write-Error "Não foi possível identificar a feature de origem. É preciso especificá-la usando o parâmetro -feature ou fazer um checkout para a branch"
             Return
         }
 
         $featurePrefix = $featureBranch.Replace('/feature', '')
-    } else {
+    }
+    else {
         $featurePrefix = "story-$feature"
     }
 
@@ -205,21 +208,21 @@ function Rebase-From-Origin {
 
 <#
     .Synopsis
-    Faz rebase da develop para a branch atual
+    Faz rebase da main para a branch atual
 
     .Parameter origin
-    (Opcional) Se informado o rebase é feito da origin/develop. Caso contrário, é feito da develop
+    (Opcional) Se informado o rebase é feito da origin/main. Caso contrário, é feito da main
 #>
-function Rebase-From-Develop {
+function Rebase-From-Main {
     param (
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Alias("o")]
         [switch] $origin
     ) 
 
-    $branch = "develop"
-    if($origin) {
-        $branch = "origin/develop"
+    $branch = "main"
+    if ($origin) {
+        $branch = "origin/main"
     }
     
     git rebase $branch
@@ -234,7 +237,7 @@ function Rebase-From-Develop {
 #>
 function Rebase-From-Feature {
     param (
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Alias("o")]
         [switch] $origin
     ) 
@@ -256,11 +259,11 @@ function Get-Current-Feature {
         Return $currentBranch
     }
 
-    if($currentBranch -Match "story-(\d+)/task/(\d+)") {
+    if ($currentBranch -Match "story-(\d+)/task/(\d+)") {
         $featurePrefix = [regex]::Match($currentBranch, 'story-(\d{1,})/').Groups[0].Value
-        $featureBranch = -Join($featurePrefix, 'feature')
+        $featureBranch = -Join ($featurePrefix, 'feature')
 
-        if(-Not $(git show-ref "refs/heads/$featureBranch")) {
+        if (-Not $(git show-ref "refs/heads/$featureBranch")) {
             Write-Error "Branch $featureBranch não encontrada"
             Return
         }
