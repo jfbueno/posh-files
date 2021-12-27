@@ -14,7 +14,7 @@ if (-Not (Get-Module -ListAvailable -Name oh-my-posh)) {
 }
 
 Import-Module oh-my-posh
-Set-PoshPrompt -Theme "$root/Themes/my-themes/default.omp.json"
+oh-my-posh --init --shell pwsh --config "$root/Themes/my-themes/default.omp.json" | Invoke-Expression
 
 . "$root/GitFlowIepro.Functions.ps1"
 . "$root/CreateAliases.ps1"
