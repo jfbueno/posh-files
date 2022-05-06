@@ -4,17 +4,18 @@ $localModulesDir = Join-Path $root Modules
 Import-Module PSReadline
 
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadlineKeyHandler –Key DownArrow -Function HistorySearchForward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Import-Module "$localModulesDir/posh-alias"
-Import-Module "$localModulesDir/posh-git/src/posh-git.psd1"
 
-if (-Not (Get-Module -ListAvailable -Name oh-my-posh)) {
-    Install-Module oh-my-posh -Scope CurrentUser -AllowPrerelease -Force
+if (-Not (Get-Module -ListAvailable -Name posh-git)) {
+    Install-Module posh-git -Scope CurrentUser -AllowPrerelease -Force
 }
+Import-Module posh-git
 
-Import-Module oh-my-posh
 oh-my-posh --init --shell pwsh --config "$root/Themes/my-themes/default.omp.json" | Invoke-Expression
+
+$env:POSH_GIT_ENABLED = $true
 
 . "$root/GitFlowIepro.Functions.ps1"
 . "$root/CreateAliases.ps1"
