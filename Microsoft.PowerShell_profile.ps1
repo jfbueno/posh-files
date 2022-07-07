@@ -13,7 +13,7 @@ if (-Not (Get-Module -ListAvailable -Name posh-git)) {
 }
 Import-Module posh-git
 
-oh-my-posh --init --shell pwsh --config "$root/Themes/my-themes/default.omp.json" | Invoke-Expression
+oh-my-posh --init --shell pwsh --config "$root/Themes/my-themes/night-owl.omp.json" | Invoke-Expression
 
 $env:POSH_GIT_ENABLED = $true
 
