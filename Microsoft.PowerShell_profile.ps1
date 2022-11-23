@@ -17,5 +17,5 @@ oh-my-posh init pwsh --config "$root/Themes/my-themes/night-owl.omp.json" | Invo
 
 $env:POSH_GIT_ENABLED = $true
 
-. "$root/GitFlowIepro.Functions.ps1"
+. "$root/GitFlowAbc.Functions.ps1"
 . "$root/CreateAliases.ps1"
