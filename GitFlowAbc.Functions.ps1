@@ -69,7 +69,7 @@ function New-FeatureBranch {
         [Parameter(Mandatory = $false)]
         [string]$from = 'main'
     )
-    git checkout -b "story-$feature/feature" $from
+    git checkout -b "us-$feature/feat" $from
 }
 
 <#
@@ -109,11 +109,11 @@ function New-TaskBranch {
             Return
         }
 
-        $featurePrefix = $featureBranch.Replace('/feature', '')
+        $featurePrefix = $featureBranch.Replace('/feat', '')
     }
     else {
-        $featurePrefix = "story-$feature"
-        $featureBranch = "$featurePrefix/feature"
+        $featurePrefix = "us-$feature"
+        $featureBranch = "$featurePrefix/feat"
 
         $featureCommit = $(git rev-parse --verify --quiet $featureBranch)
 
@@ -128,7 +128,7 @@ function New-TaskBranch {
         }
     }
     
-    git checkout -b "$featurePrefix/task/$task" $featureBranch
+    git checkout -b "$featurePrefix/task-$task" $featureBranch
 }
 
 <#
@@ -156,7 +156,7 @@ function Checkout-FeatureBranch {
         Return
     }
 
-    git checkout "story-$feature/feature"
+    git checkout "us-$feature/feat"
 }
 
 <#
@@ -187,13 +187,13 @@ function Checkout-TaskBranch {
             Return
         }
 
-        $featurePrefix = $featureBranch.Replace('/feature', '')
+        $featurePrefix = $featureBranch.Replace('/feat', '')
     }
     else {
-        $featurePrefix = "story-$feature"
+        $featurePrefix = "us-$feature"
     }
 
-    git checkout "$featurePrefix/task/$task"
+    git checkout "$featurePrefix/task-$task"
 }
 
 <#
@@ -251,17 +251,16 @@ function Rebase-From-Feature {
     git rebase $branch
 }
 
-# Todo: Ver se isso se encaixa no guia de nomenclatura
 function Get-Current-Feature {
     $currentBranch = Get-Current-Branch-Name
 
-    if ($currentBranch -Match "story-(\d+)/feature") {
+    if ($currentBranch -Match "us-(\d+)/feat") {
         Return $currentBranch
     }
 
-    if ($currentBranch -Match "story-(\d+)/task/(\d+)") {
-        $featurePrefix = [regex]::Match($currentBranch, 'story-(\d{1,})/').Groups[0].Value
-        $featureBranch = -Join ($featurePrefix, 'feature')
+    if ($currentBranch -Match "us-(\d+)/task-(\d+)") {
+        $featurePrefix = [regex]::Match($currentBranch, 'us-(\d{1,})/').Groups[0].Value
+        $featureBranch = -Join ($featurePrefix, 'feat')
 
         if (-Not $(git show-ref "refs/heads/$featureBranch")) {
             Write-Error "Branch $featureBranch não encontrada"
