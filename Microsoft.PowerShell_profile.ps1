@@ -17,5 +17,13 @@ oh-my-posh init pwsh --config "${env:LOCALAPPDATA}\Programs\oh-my-posh\themes\cr
 
 $env:POSH_GIT_ENABLED = $true
 
+Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+    param($commandName, $wordToComplete, $cursorPosition)
+        dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
+           [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+        }
+}
+
+
 . "$root/GitFlowAbc.Functions.ps1"
 . "$root/CreateAliases.ps1"
