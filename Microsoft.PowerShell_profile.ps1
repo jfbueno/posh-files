@@ -24,6 +24,14 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
         }
 }
 
+if (-Not (Get-Module -ListAvailable -Name posh-cli)) {
+    Install-Module posh-cli -Scope CurrentUser    
+    Install-TabCompletion
+    
+    Import-Module posh-dotnet
+    Import-Module DockerCompletion
+    Import-Module PSKubectlCompletion
+}
 
 . "$root/GitFlowAbc.Functions.ps1"
 . "$root/CreateAliases.ps1"
