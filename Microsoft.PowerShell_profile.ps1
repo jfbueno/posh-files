@@ -13,7 +13,7 @@ if (-Not (Get-Module -ListAvailable -Name posh-git)) {
 }
 Import-Module posh-git
 
-oh-my-posh init pwsh --config "${env:LOCALAPPDATA}\Programs\oh-my-posh\themes\craver.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$root/Themes/my-themes/jef.omp.json" | Invoke-Expression
 
 $env:POSH_GIT_ENABLED = $true
 
@@ -35,3 +35,5 @@ if (-Not (Get-Module -ListAvailable -Name posh-cli)) {
 
 . "$root/GitFlowAbc.Functions.ps1"
 . "$root/CreateAliases.ps1"
+
+Import-Module posh-dotnet
