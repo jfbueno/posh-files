@@ -1,1 +1,2 @@
-winget install JanDeDobbeleer.OhMyPosh -s winget
+winget install JanDeDobbeleer.OhMyPosh --source winget
+winget install bat --source winget
