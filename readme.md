@@ -2,6 +2,12 @@
 
 Este repositório contém algumas funções e módulos que normalmente uso no Powershell.
 
+## Requisitos
+* GIT
+  ```bash
+  winget install -e --id Git.Git
+  ```
+
 Para instalar, execute:
 
 ## Instalação
