@@ -7,11 +7,10 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Import-Module "$localModulesDir/posh-alias"
-
-if (-Not (Get-Module -ListAvailable -Name posh-git)) {
-    Install-Module posh-git -Scope CurrentUser -AllowPrerelease -Force
-}
 Import-Module posh-git
+Import-Module posh-dotnet
+Import-Module DockerCompletion
+Import-Module PSKubectlCompletion
 
 oh-my-posh init pwsh --config "$root/Themes/my-themes/jef-simple.omp.json" | Invoke-Expression
 
@@ -24,16 +23,5 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
         }
 }
 
-if (-Not (Get-Module -ListAvailable -Name posh-cli)) {
-    Install-Module posh-cli -Scope CurrentUser    
-    Install-TabCompletion
-    
-    Import-Module posh-dotnet
-    Import-Module DockerCompletion
-    Import-Module PSKubectlCompletion
-}
-
 . "$root/GitFlowAbc.Functions.ps1"
 . "$root/CreateAliases.ps1"
-
-Import-Module posh-dotnet
