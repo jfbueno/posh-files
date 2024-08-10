@@ -4,6 +4,20 @@ Este repositório contém algumas funções e módulos que normalmente uso no Po
 
 Para instalar, execute:
 
+## Pré-requisitos
+
+1. Git
+
+    ```pwsh
+    winget install -e --id Git.Git --accept-package-agreements
+    ```
+
+1. Powershell
+
+    ```pwsh
+    winget install -e --id Microsoft.PowerShell --accept-package-agreements
+    ```
+
 ## Instalação
 
 1. Clonar o repositório
@@ -12,13 +26,23 @@ Para instalar, execute:
     git clone --recursive https://github.com/jfbueno/posh-files.git $env:UserProfile/Documents/PowerShell
     ```
 
-2. Instalar as dependências com winget
+1. Após clonar o repositório, executar os scripts de instalação usando o Powershell
 
-    ```pwsh
-    cd $env:UserProfile/Documents/Powershell
-    ./Install.ps1
-    ```
+    1. NerdFonts - Necessário para exibição do tema do OhMyPosh
 
-3. Baixar e instalar uma nerd font em [nerdfonts](https://www.nerdfonts.com/font-downloads)
+        ```pwsh
+        cd $env:UserProfile/Documents/Powershell
+        ./Install-Fonts.ps1
+        ```
 
-4. Alterar a fonte do terminal
+    1. Instalar os pacotes e módulos do Powershell 
+
+        ```pwsh   
+        ./Install.ps1
+        ```
+
+    1. Criar symlinks de configurações (git e Windows Terminal)
+
+        ```pwsh
+        ./SetupConfig.ps1
+        ```
