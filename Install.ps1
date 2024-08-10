@@ -1,3 +1,4 @@
+winget install -e --id Microsoft.PowerShell --accept-package-agreements
 winget install -e --id Microsoft.WindowsTerminal
 winget install JanDeDobbeleer.OhMyPosh --source winget
 winget install bat --source winget
