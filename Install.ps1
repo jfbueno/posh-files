@@ -5,7 +5,7 @@ winget install dandavison.delta --source winget
 winget install notepad++ --source winget
 winget install --id Microsoft.PowerToys --source winget
 
-Install-Module posh-git -Scope CurrentUser -AllowPrerelease -Force
+Install-Module posh-git -Scope CurrentUser
 Install-Module posh-cli -Scope CurrentUser
 
 Install-TabCompletion
