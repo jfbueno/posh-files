@@ -87,7 +87,8 @@
                 "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
                 "hidden": false,
                 "name": "Ubuntu",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
+                "colorScheme": "BlueBerryPie"
             },
             {
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
@@ -105,6 +106,30 @@
                 "guid": "{a61c70f0-752a-54e3-8701-553fdb5493d1}",
                 "hidden": false,
                 "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
+                "hidden": true,
+                "name": "Visual Studio Debug Console",
+                "source": "VSDebugConsole"
+            },
+            {
+                "guid": "{c563de21-725a-562a-a670-70ebb0565db5}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{142383d8-52ca-5cbb-a5f9-d57084609ad7}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{7aae5ec2-7222-59b6-9ec1-2e9edba86c76}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2017",
                 "source": "Windows.Terminal.VisualStudio"
             }
         ]
@@ -133,7 +158,30 @@
             "selectionBackground": "#FFFFFF",
             "white": "#F8F8F2",
             "yellow": "#F1FA8C"
-        }
+        },
+        {
+            "name": "BlueBerryPie",
+            "black": "#0a4c62",
+            "red": "#99246e",
+            "green": "#5cb1b3",
+            "yellow": "#eab9a8",
+            "blue": "#90a5bd",
+            "purple": "#9d54a7",
+            "cyan": "#7e83cc",
+            "white": "#f0e8d6",
+            "brightBlack": "#201637",
+            "brightRed": "#c87272",
+            "brightGreen": "#0a6c7e",
+            "brightYellow": "#7a3188",
+            "brightBlue": "#39173d",
+            "brightPurple": "#bc94b7",
+            "brightCyan": "#5e6071",
+            "brightWhite": "#0a6c7e",
+            "background": "#1c0c28",
+            "foreground": "#babab9",
+            "selectionBackground": "#606060",
+            "cursorColor": "#fcfad6"
+          }
     ],
     "tabWidthMode": "equal",
     "theme": "system",
