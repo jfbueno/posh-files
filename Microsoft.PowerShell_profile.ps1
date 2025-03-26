@@ -12,9 +12,7 @@ Import-Module posh-dotnet
 Import-Module DockerCompletion
 Import-Module PSKubectlCompletion
 
-oh-my-posh init pwsh --config "$root/Themes/my-themes/jef-simple.omp.json" | Invoke-Expression
-
-$env:POSH_GIT_ENABLED = $true
+oh-my-posh init pwsh --config "$root/Themes/my-themes/crazy-diamond.omp.json" | Invoke-Expression
 
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
     param($commandName, $wordToComplete, $cursorPosition)

@@ -52,7 +52,7 @@
                 "face": "CaskaydiaCove Nerd Font",
                 "size": 13
             },
-            "opacity": 75,
+            "opacity": 100,
             "startingDirectory": "C:\\Source\\Ouze",
             "useAcrylic": true
         },
@@ -84,11 +84,11 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
+                "colorScheme": "BlueBerryPie",
                 "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
                 "hidden": false,
                 "name": "Ubuntu",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
-                "colorScheme": "BlueBerryPie"
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
             },
             {
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
@@ -131,12 +131,42 @@
                 "hidden": true,
                 "name": "Developer Command Prompt for VS 2017",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{46ca431a-3a87-5fb3-83cd-11ececc031d2}",
+                "hidden": false,
+                "name": "kali-linux",
+                "source": "Windows.Terminal.Wsl"
             }
         ]
     },
     "schemes": 
     [
         {
+            "name": "BlueBerryPie",
+            "background": "#1C0C28",
+            "black": "#0A4C62",
+            "blue": "#90A5BD",
+            "brightBlack": "#201637",
+            "brightBlue": "#39173D",
+            "brightCyan": "#5E6071",
+            "brightGreen": "#0A6C7E",
+            "brightPurple": "#BC94B7",
+            "brightRed": "#C87272",
+            "brightWhite": "#0A6C7E",
+            "brightYellow": "#7A3188",
+            "cursorColor": "#FCFAD6",
+            "cyan": "#7E83CC",
+            "foreground": "#BABAB9",
+            "green": "#5CB1B3",
+            "purple": "#9D54A7",
+            "red": "#99246E",
+            "selectionBackground": "#606060",
+            "white": "#F0E8D6",
+            "yellow": "#EAB9A8"
+        },
+        {
+            "name": "Dracula",
             "background": "#282A36",
             "black": "#21222C",
             "blue": "#BD93F9",
@@ -152,36 +182,12 @@
             "cyan": "#8BE9FD",
             "foreground": "#F8F8F2",
             "green": "#50FA7B",
-            "name": "Dracula",
-            "purple": "#FF79C6",
+            "purple": "#29315A",
             "red": "#FF5555",
             "selectionBackground": "#FFFFFF",
             "white": "#F8F8F2",
             "yellow": "#F1FA8C"
-        },
-        {
-            "name": "BlueBerryPie",
-            "black": "#0a4c62",
-            "red": "#99246e",
-            "green": "#5cb1b3",
-            "yellow": "#eab9a8",
-            "blue": "#90a5bd",
-            "purple": "#9d54a7",
-            "cyan": "#7e83cc",
-            "white": "#f0e8d6",
-            "brightBlack": "#201637",
-            "brightRed": "#c87272",
-            "brightGreen": "#0a6c7e",
-            "brightYellow": "#7a3188",
-            "brightBlue": "#39173d",
-            "brightPurple": "#bc94b7",
-            "brightCyan": "#5e6071",
-            "brightWhite": "#0a6c7e",
-            "background": "#1c0c28",
-            "foreground": "#babab9",
-            "selectionBackground": "#606060",
-            "cursorColor": "#fcfad6"
-          }
+        }
     ],
     "tabWidthMode": "equal",
     "theme": "system",
