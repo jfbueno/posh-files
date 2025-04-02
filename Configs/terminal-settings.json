@@ -9,18 +9,11 @@
                 "action": "copy",
                 "singleLine": false
             },
-            "id": "User.copy.644BA8F2",
-            "keys": "ctrl+c"
+            "id": "User.copy.644BA8F2"
         },
         {
             "command": "paste",
-            "id": "User.paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "command": "find",
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "id": "User.paste"
         },
         {
             "command": 
@@ -29,14 +22,36 @@
                 "split": "auto",
                 "splitMode": "duplicate"
             },
-            "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
+            "id": "User.splitPane.A6751878"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
         }
     ],
     "alwaysShowNotificationIcon": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "keybindings": 
+    [
+        {
+            "id": "User.copy.644BA8F2",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "User.paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        }
+    ],
     "newTabMenu": 
     [
         {
@@ -53,7 +68,7 @@
                 "size": 13
             },
             "opacity": 100,
-            "startingDirectory": "C:\\Source\\Ouze",
+            "startingDirectory": "C:\\Source\\Frigelar",
             "useAcrylic": true
         },
         "list": 
@@ -143,7 +158,6 @@
     "schemes": 
     [
         {
-            "name": "BlueBerryPie",
             "background": "#1C0C28",
             "black": "#0A4C62",
             "blue": "#90A5BD",
@@ -159,6 +173,7 @@
             "cyan": "#7E83CC",
             "foreground": "#BABAB9",
             "green": "#5CB1B3",
+            "name": "BlueBerryPie",
             "purple": "#9D54A7",
             "red": "#99246E",
             "selectionBackground": "#606060",
@@ -166,7 +181,6 @@
             "yellow": "#EAB9A8"
         },
         {
-            "name": "Dracula",
             "background": "#282A36",
             "black": "#21222C",
             "blue": "#BD93F9",
@@ -182,6 +196,7 @@
             "cyan": "#8BE9FD",
             "foreground": "#F8F8F2",
             "green": "#50FA7B",
+            "name": "Dracula",
             "purple": "#29315A",
             "red": "#FF5555",
             "selectionBackground": "#FFFFFF",
