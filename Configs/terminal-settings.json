@@ -99,7 +99,7 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "colorScheme": "BlueBerryPie",
+                "colorScheme": "AdventureTime",
                 "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
                 "hidden": false,
                 "name": "Ubuntu",
@@ -157,6 +157,29 @@
     },
     "schemes": 
     [
+        {
+            "name": "AdventureTime",
+            "black": "#050404",
+            "red": "#bd0013",
+            "green": "#4ab118",
+            "yellow": "#e7741e",
+            "blue": "#0f4ac6",
+            "purple": "#665993",
+            "cyan": "#70a598",
+            "white": "#f8dcc0",
+            "brightBlack": "#4e7cbf",
+            "brightRed": "#fc5f5a",
+            "brightGreen": "#9eff6e",
+            "brightYellow": "#efc11a",
+            "brightBlue": "#1997c6",
+            "brightPurple": "#9b5953",
+            "brightCyan": "#c8faf4",
+            "brightWhite": "#f6f5fb",
+            "background": "#1f1d45",
+            "foreground": "#f8dcc0",
+            "selectionBackground": "#706b4e",
+            "cursorColor": "#efbf38"
+          },
         {
             "background": "#1C0C28",
             "black": "#0A4C62",
