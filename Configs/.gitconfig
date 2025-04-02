@@ -2,6 +2,9 @@
     pager = delta
     editor = code --wait
 
+[init]
+    defaultBranch = main
+
 [interactive]
     diffFilter = delta --color-only
 
@@ -17,3 +20,5 @@
 
 [diff]
     colorMoved = default
+[credential "https://git.cwi.com.br"]
+	provider = generic
