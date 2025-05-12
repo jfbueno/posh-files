@@ -18,6 +18,16 @@
 [merge]
     conflictstyle = diff3
 
+[grep]
+    lineNumber = true
+
+[alias]
+    wdiff = diff --word-diff
+    stasha = stash --all
+
+[rerere]
+    enabled = true
+
 [diff]
     colorMoved = default
 [credential "https://git.cwi.com.br"]
