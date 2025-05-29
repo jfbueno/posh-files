@@ -24,6 +24,18 @@
 [alias]
     wdiff = diff --word-diff
     stasha = stash --all
+    co = checkout
+    sw = switch
+    br = branch
+    st = status
+    rb = rebase
+    rbi = rebase -i
+    l = log --oneline --color
+    lg = log --graph --oneline --decorate
+    f = fetch
+    p = push
+    pushsync = push --set-upstream origin HEAD
+    fush = push --force-with-lease
 
 [rerere]
     enabled = true
