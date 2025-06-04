@@ -1,4 +1,4 @@
-function IeproFlow-Help() {
+function GitHelpers-Help() {
     Write-Host "New-FeatureBranch" -ForegroundColor Yellow -NoNewline
     Write-Host " (alias: new-ft)`n  Cria uma nova feature branch"`n    
 

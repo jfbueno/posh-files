@@ -21,5 +21,5 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
         }
 }
 
-. "$root/GitFlowAbc.Functions.ps1"
+. "$root/GitHelpers.Functions.ps1"
 . "$root/CreateAliases.ps1"
