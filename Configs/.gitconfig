@@ -36,6 +36,7 @@
     p = push
     pushsync = push --set-upstream origin HEAD
     fush = push --force-with-lease
+    rbo = !git fetch origin && git rebase origin/$(git symbolic-ref --short HEAD)
 
 [rerere]
     enabled = true
